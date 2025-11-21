@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Package Express - Shipping Quote</title>
+</head>
+<body>
+  <!-- This page uses browser prompt boxes for input and shows the quote in an alert and console. -->
+  <script>
+    // Welcome message shown in the browser console
+    console.log("Welcome to Package Express. Please follow the instructions below.");
+
+    // Show the welcome message also as an alert so the user sees it immediately
+    alert("Welcome to Package Express. Please follow the instructions below.");
+
+    // Prompt the user to enter the package weight. prompt() returns a string.
+    // We use Number(...) to convert the input to a number for comparisons and math.
+    var weightInput = prompt("Please enter the package weight:");
+
+    // Convert string to number (if user cancels, prompt returns null; Number(null) -> 0, so we handle that below)
+    var weight = Number(weightInput);
+
+    // If the user pressed Cancel or entered a non-number, weight may be NaN. We handle invalid input:
+    if (weightInput === null || isNaN(weight)) {
+      // Inform the user about invalid input and stop the script
+      alert("Invalid weight entered. Please refresh the page and enter a valid number.");
+      console.log("Invalid weight entered. Program ended.");
+    } else {
+      // Check if the weight is greater than 50
+      if (weight > 50) {
+        // If package is too heavy, show the error and end the program
+        var heavyMsg = "Package too heavy to be shipped via Package Express. Have a good day.";
+        alert(heavyMsg);
+        console.log(heavyMsg);
+      } else {
+        // Prompt for width
+        var widthInput = prompt("Please enter the package width:");
+        var width = Number(widthInput);
+
+        // Validate width input
+        if (widthInput === null || isNaN(width)) {
+          alert("Invalid width entered. Please refresh the page and enter a valid number.");
+          console.log("Invalid width entered. Program ended.");
+        } else {
+          // Prompt for height
+          var heightInput = prompt("Please enter the package height:");
+          var height = Number(heightInput);
+
+          // Validate height input
+          if (heightInput === null || isNaN(height)) {
+            alert("Invalid height entered. Please refresh the page and enter a valid number.");
+            console.log("Invalid height entered. Program ended.");
+          } else {
+            // Prompt for length
+            var lengthInput = prompt("Please enter the package length:");
+            var length = Number(lengthInput);
+
+            // Validate length input
+            if (lengthInput === null || isNaN(length)) {
+              alert("Invalid length entered. Please refresh the page and enter a valid number.");
+              console.log("Invalid length entered. Program ended.");
+            } else {
+              // Check if the sum of dimensions is greater than 50
+              var dimensionTotal = width + height + length;
+              if (dimensionTotal > 50) {
+                // Show the package-too-big message and end
+                var bigMsg = "Package too big to be shipped via Package Express.";
+                alert(bigMsg);
+                console.log(bigMsg);
+              } else {
+                // Calculate the shipping quote:
+                // 1) Multiply width * height * length
+                var dimensionsProduct = width * height * length;
+
+                // 2) Multiply the product by the weight
+                var weightedProduct = dimensionsProduct * weight;
+
+                // 3) Divide the outcome by 100 to get the quote
+                var quote = weightedProduct / 100;
+
+                // Format the quote to two decimal places to show as dollar amount
+                var quoteFormatted = quote.toFixed(2);
+
+                // Show the final quote to the user in an alert and also log to console
+                var finalMessage = "Your estimated total for shipping this package is: $" + quoteFormatted + "\nThank you!";
+                alert(finalMessage);
+                console.log(finalMessage);
+              }
+            }
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
