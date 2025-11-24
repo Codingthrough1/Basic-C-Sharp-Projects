@@ -1,4 +1,17 @@
+# C# Course Projects
 
-# Basic C-Sharp Projects
+## Description
+This repository contains projects completed during my C# course. These projects helped me practice object-oriented programming concepts, interfaces, polymorphism, and console application development.
 
-This repository contains all of my coding projects for The Tech Academy C# course. It will be updated regularly as I progress through the curriculum.
+## Key Skills Gained
+- C# programming fundamentals  
+- Object-Oriented Programming (OOP)  
+- Interfaces and polymorphism  
+- Console application development  
+- GitHub repository management
+
+## Sample Project: EmployeeQuitApp
+A console application demonstrating interfaces and polymorphism. The `Employee` class implements `IQuittable`, allowing employees to "quit" via a common interface method.
+
+**Example Output:**
+John Doe has quit the job.
